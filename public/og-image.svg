@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g" cx="75%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#12335a"/><stop offset="1" stop-color="#05070d"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g stroke="#38d4f5" stroke-opacity=".5" stroke-width="2" fill="none">
+    <path d="M760 315H900M900 315L1000 200M900 315L1000 430M900 315H1060"/>
+    <circle cx="760" cy="315" r="46" fill="#38d4f5" fill-opacity=".2"/>
+    <circle cx="1000" cy="200" r="22"/><circle cx="1000" cy="430" r="22"/><circle cx="1060" cy="315" r="22"/>
+  </g>
+  <text x="80" y="280" font-family="Arial, sans-serif" font-size="84" font-weight="700" fill="#ffffff">Himanshu Singh</text>
+  <text x="80" y="350" font-family="Arial, sans-serif" font-size="38" fill="#7fe7ff">SAP BTP Integration Engineer</text>
+  <text x="80" y="410" font-family="Arial, sans-serif" font-size="26" fill="#9aa7bd">SAP CPI · S/4HANA · API Management · Cloud Connector</text>
+</svg>

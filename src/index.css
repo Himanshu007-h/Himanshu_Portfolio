@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-ink-950 font-sans text-slate-300 antialiased;
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(56, 212, 245, 0.1), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 40%, rgba(124, 108, 255, 0.09), transparent 60%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* subtle blueprint grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+::selection {
+  background: rgba(56, 212, 245, 0.3);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #7fe7ff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] shadow-panel backdrop-blur-xl;
+  }
+  .chip {
+    @apply rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] text-slate-300;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-cyanx-400 px-5 py-3 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:-translate-y-0.5 hover:bg-cyanx-300;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-cyanx-400/60 hover:bg-white/[0.08];
+  }
+  .btn-icon {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-300 transition-colors hover:border-cyanx-400/60 hover:text-white;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.25em] text-cyanx-400;
+  }
+  .section {
+    @apply relative z-10 mx-auto w-full max-w-6xl px-5 py-24 sm:px-8;
+  }
+  .section-title {
+    @apply mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl;
+  }
+  .section-lead {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-slate-400;
+  }
+}
+
+/* ---------- CSS 3D project cards ---------- */
+.card3d-wrap {
+  perspective: 1200px;
+}
+.card3d {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(var(--tz, 0px));
+  transition: transform 0.25s ease-out, border-color 0.25s, box-shadow 0.25s;
+  will-change: transform;
+}
+.card3d:hover,
+.card3d:focus-within {
+  --tz: 22px;
+  border-color: rgba(56, 212, 245, 0.45);
+  box-shadow: 0 30px 70px -25px rgba(56, 212, 245, 0.35);
+}
+.depth-1 {
+  transform: translateZ(14px);
+}
+.depth-2 {
+  transform: translateZ(30px);
+}
+.depth-3 {
+  transform: translateZ(46px);
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070d;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2742;
+  border-radius: 8px;
+}
+
+/* ---------- timeline pulse ---------- */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .card3d {
+    transform: none !important;
+  }
+}
